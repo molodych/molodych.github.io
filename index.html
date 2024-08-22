@@ -1,7 +1,34 @@
-<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-messaging.js"></script>
-<script type="text/javascript" src="/ak-push.js"></script>
-<link rel="manifest" href="/manifest.json"></link>
-<script>
-        alert("it just work!");
-</script>
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Приветственный сайт</title>
+        <link rel="stylesheet" href="https://happyted.github.io/styles.css">
+
+        <!-- PUSH SDK -->
+
+        <script type="text/javascript" src="ak-push.js"></script>
+        <link rel="manifest" href="manifest.json">
+    </head>
+    <body>
+    
+        <div class="container">
+            <h1>Добро пожаловать!</h1>
+            <p>Пожалуйста, представьтесь:</p>
+            <input type="text" id="nameInput" placeholder="Ваше имя">
+
+            <!-- Кнопка подписки -->
+            <button type="button" id="init_sub">PUSH - подписка</button>
+            
+            <script>
+                document.getElementById('init_sub').addEventListener('click', () => {
+                    new AKPush().initSubscription({ email: document.getElementById('nameInput').value.trim()+'_ex@example.com' })
+                });
+            </script>
+        </div>
+
+
+
+    </body>
+</html>
